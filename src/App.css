@@ -1,3 +1,5 @@
+/* ================= EXISTING CODE ================= */
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -181,4 +183,79 @@
     right: 0;
     border-right-color: var(--border);
   }
+}
+
+/* ================= NEW GAMING UI ================= */
+
+/* GRID BACKGROUND */
+.auth-grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(99,102,241,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,85,247,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(40px); }
+}
+
+/* SCANLINES */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.15;
+}
+
+/* INPUT */
+.glow-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 12px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.glow-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow:
+    0 0 0 1px #6366f1,
+    0 0 12px rgba(99,102,241,0.5),
+    0 0 30px rgba(168,85,247,0.2);
+}
+
+/* BUTTON */
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  border: none;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  padding: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 0 20px rgba(99,102,241,0.6),
+    0 0 40px rgba(168,85,247,0.3);
+  transform: translateY(-1px);
 }

@@ -1,34 +1,44 @@
 export default function FormInput({ label, error, className = '', ...props }) {
   return (
     <div className="flex flex-col gap-1.5">
- 
-      {/* Label — htmlFor links it to the input for accessibility.
-          Screen readers announce the label when the input is focused.
-          Clicking the label also focuses the input — standard UX. */}
+
+      {/* Label */}
       <label
         htmlFor={props.id || props.name}
-        className="text-sm font-medium text-vault-muted"
+        style={{
+          fontFamily: "'Rajdhani', sans-serif",
+          fontSize: '0.75rem',
+          fontWeight: 600,
+          letterSpacing: '0.08em',
+          textTransform: 'uppercase',
+          color: 'var(--muted)',
+        }}
       >
         {label}
       </label>
- 
-      {/* 
-        {...props} spreads everything else (type, value, onChange, placeholder,
-        required, disabled, etc.) directly onto the native input.
-        This makes FormInput a thin, flexible wrapper — it doesn't need to
-        know about every possible input attribute.
-      */}
+
+      {/* Input */}
       <input
         id={props.id || props.name}
-        className={`input-field ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''} ${className}`}
         {...props}
+        className={`
+          glow-input
+          ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}
+          ${className}
+        `}
       />
- 
-      {/* Error message — only rendered when the error prop has a value.
-          The role="alert" makes screen readers announce it immediately
-          when it appears, without the user needing to navigate to it. */}
+
+      {/* Error */}
       {error && (
-        <p className="text-red-400 text-xs mt-0.5" role="alert">
+        <p
+          role="alert"
+          style={{
+            color: '#f87171',
+            fontSize: '0.7rem',
+            fontFamily: "'Share Tech Mono', monospace",
+            marginTop: '2px',
+          }}
+        >
           {error}
         </p>
       )}
