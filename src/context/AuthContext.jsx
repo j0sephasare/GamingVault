@@ -10,17 +10,7 @@ import {
   sendPasswordResetEmail,
 } from 'firebase/auth'
 
-/*
-  WHY CONTEXT?
-  
-  Without context, if you need the current user in both your Navbar AND your
-  VaultPage AND your PrivateRoute, you'd have to pass it as a prop through
-  every component in between — even ones that don't use it. This is called
-  "prop drilling" and it's messy.
-  
-  With context, any component can call useAuth() and get the current user
-  directly, no matter how deep in the tree it is.
-*/
+
 
 // Step 1: Create the context object. The null default is just a placeholder —
 // the real value comes from AuthProvider below.
